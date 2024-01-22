@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Card({ titre, ...props }) {
+function Card({ titre }) {
   return (
     <article className="card">
       <header className="card__header header__title">{titre}</header>
@@ -8,5 +9,13 @@ function Card({ titre, ...props }) {
     </article>
   );
 }
+
+Card.propTypes = {
+  titre: PropTypes.string,
+};
+
+Card.defaultProps = {
+  titre: "Title",
+};
 
 export default Card;
