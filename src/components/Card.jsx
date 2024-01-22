@@ -1,9 +1,9 @@
 import React from "react";
 
-function Card(Titre) {
+function Card({ titre, ...props }) {
   return (
     <article className="card">
-      <header className="card__header header__title">{Titre}</header>
+      <header className="card__header header__title">{titre}</header>
       <section className="card__main">Content</section>
     </article>
   );
