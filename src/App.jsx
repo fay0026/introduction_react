@@ -5,11 +5,14 @@ import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
 import Card from "./components/Card";
 
 function App() {
+  let cpt = 0;
   const clickHandler = () => {
-    console.log("Ya shouldn't have don' that");
+    cpt += 1;
+    console.log(cpt);
   };
   const clickHandler2 = () => {
-    console.log("Ya shouldn't have don' that");
+    cpt += 1;
+    console.log(cpt);
   };
   return (
     <div className="app">
@@ -20,10 +23,10 @@ function App() {
         <div className="cards">
           <Card
             titre="Titre 1"
-            btn_content={<FontAwesomeIcon icon={faShieldCat} />}
+            content={<FontAwesomeIcon icon={faShieldCat} />}
           />
           <Card titre="Titre 2" onClick={clickHandler} />
-          <Card titre="Titre 3" />
+          <Card titre="Titre 3" content={cpt} onClick={clickHandler2} />
           <Card titre="Titre 4" />
           {/* {Card("Titre 1")}
           {Card("Titre 2")}

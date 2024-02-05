@@ -4,9 +4,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Button({ children, className, onClick }) {
+  if (children == null) {
+    var retour = "bouton";
+  } else {
+    var retour = children;
+  }
   return (
     <button className={className} type="button" onClick={onClick}>
-      <article>{children}</article>
+      <article>{retour}</article>
     </button>
   );
 }

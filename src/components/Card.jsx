@@ -4,16 +4,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 
-function Card({ titre, icon }) {
-  const clickHandler = () => {
-    console.log("Ya shouldn't have don' that");
-  };
+// eslint-disable-next-line react/prop-types
+function Card({ titre, content, onClick }) {
   return (
     <article className="card">
       <header className="card__header header__title">{titre}</header>
       <section className="card__main">Content</section>
-      <Button className="btn" onClick={clickHandler}>
-        {icon}
+      <Button className="btn" onClick={onClick}>
+        {content}
       </Button>
     </article>
   );
@@ -21,12 +19,12 @@ function Card({ titre, icon }) {
 
 Card.propTypes = {
   titre: PropTypes.string,
-  icon: PropTypes.string,
+  content: PropTypes.node,
 };
 
 Card.defaultProps = {
   titre: "Title",
-  icon: "Bouton",
+  content: null,
 };
 
 export default Card;
