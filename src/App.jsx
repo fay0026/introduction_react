@@ -2,16 +2,17 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import Card from "./components/Card";
 
 function App() {
-  let cpt = 0;
+  const [cpt, setCpt] = useState(0);
   const clickHandler = () => {
-    cpt += 1;
+    setCpt((a) => a + 1);
     console.log(cpt);
   };
   const clickHandler2 = () => {
-    cpt += 1;
+    setCpt((a) => a + 1);
     console.log(cpt);
   };
   return (
