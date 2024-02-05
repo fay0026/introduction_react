@@ -1,10 +1,24 @@
-import React from "react";
+/* eslint-disable no-console */
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
 import Card from "./components/Card";
 import Counter from "./components/Counter";
 
 function App() {
+  const [counts, setCounts] = useState({
+    simple: 0,
+    chats: 0,
+  });
+  const { simple, chats } = counts;
+  const simpleHandler = (cpt) => {
+    setCounts([cpt, chats]);
+    console.log("Le simple est +1");
+  };
+  const chatsHandler = (cpt) => {
+    setCounts([simple, cpt]);
+    console.log("Miaou");
+  };
   return (
     <div className="app">
       <header className="app__header header">
@@ -13,12 +27,9 @@ function App() {
       <main className="app__main">
         <div className="cards">
           <Card
-            titre="Carte"
-            content={<FontAwesomeIcon icon={faShieldCat} />}
-          />
-          <Card
             titre="Compteur simple"
             content={<Counter className="Compteur" />}
+            onChange={simpleHandler}
           />
           <Card
             titre="Compteur avec 2 chats"
@@ -29,7 +40,9 @@ function App() {
                 className="Compteur"
               />
             }
+            onChange={chatsHandler}
           />
+          <Card titre="Total compteurs" content={chats + simple} />
         </div>
       </main>
       <footer className="app__footer footer">footer</footer>

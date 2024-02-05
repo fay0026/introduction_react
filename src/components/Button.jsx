@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -20,11 +18,13 @@ function Button({ children, className, onClick }) {
 Button.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
   children: null,
   className: "",
+  onClick: null,
 };
 
 export default Button;
