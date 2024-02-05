@@ -1,20 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import Card from "./components/Card";
+import Button from "./components/Button";
+import Counter from "./components/Counter";
 
 function App() {
-  const [cpt, setCpt] = useState(0);
-  const clickHandler = () => {
-    setCpt((a) => a + 1);
-    console.log(cpt);
-  };
-  const clickHandler2 = () => {
-    setCpt((a) => a + 1);
-    console.log(cpt);
-  };
   return (
     <div className="app">
       <header className="app__header header">
@@ -26,8 +17,25 @@ function App() {
             titre="Titre 1"
             content={<FontAwesomeIcon icon={faShieldCat} />}
           />
-          <Card titre="Titre 2" onClick={clickHandler} />
-          <Card titre="Titre 3" content={cpt} onClick={clickHandler2} />
+          <Card
+            titre="Titre 2"
+            button={<Button content={faShieldCat} className="Button" />}
+          />
+          <Card
+            titre="Titre 3"
+            button={
+              <Button
+                content={
+                  <Counter
+                    before={faShieldCat}
+                    after={faShieldCat}
+                    className="Compteur"
+                  />
+                }
+                className="Button"
+              />
+            }
+          />
           <Card titre="Titre 4" />
           {/* {Card("Titre 1")}
           {Card("Titre 2")}
