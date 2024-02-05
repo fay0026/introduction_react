@@ -4,6 +4,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import Button from "./Button";
 
 function Counter({ before, after, className }) {
   const [cpt, setCpt] = useState(0);
@@ -12,11 +13,11 @@ function Counter({ before, after, className }) {
     console.log(cpt);
   };
   return (
-    <button className={className} type="button" onClick={clickHandler}>
+    <Button className={className} onClick={clickHandler}>
       {before}
-      <article>{cpt}</article>
+      {cpt}
       {after}
-    </button>
+    </Button>
   );
 }
 

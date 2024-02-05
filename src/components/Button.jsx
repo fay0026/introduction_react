@@ -1,11 +1,14 @@
+/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import PropTypes from "prop-types";
 
-function Button({ content, className, onClick }) {
-  if (content == null) {
-    var retour = "bouton";
+function Button({ children, className, onClick }) {
+  let retour;
+  if (children == null) {
+    retour = "bouton";
   } else {
-    var retour = content;
+    retour = children;
   }
   return (
     <button className={className} type="button" onClick={onClick}>
@@ -15,12 +18,12 @@ function Button({ content, className, onClick }) {
 }
 
 Button.propTypes = {
-  content: PropTypes.node,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Button.defaultProps = {
-  content: null,
+  children: null,
   className: "",
 };
 
