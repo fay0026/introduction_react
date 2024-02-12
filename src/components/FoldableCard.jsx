@@ -1,21 +1,41 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import Card from "./Card";
+import Button from "./Button";
+
+<FontAwesomeIcon icon={faCircleMinus} />;
 
 function FoldableCard({ titre, content, opened, onClick }) {
   let ret;
   if (opened) {
     ret = (
-      <button className="card foldable shown" type="button">
-        <header className="card__header header__title">{titre}</header>
-        <section className="card__main">{content}</section>
-      </button>
+      <Button className="card foldable shown">
+        <Card
+          titre={
+            <>
+              {titre}
+              <FontAwesomeIcon icon={faCircleMinus} onClick={onClick} />
+            </>
+          }
+          content={content}
+        />
+      </Button>
     );
   } else {
     ret = (
-      <button className="card foldable" type="button" onClick={onClick}>
-        <header className="card__header header__title">{titre}</header>
-        <section className="card__main" />
-      </button>
+      <Button className="card foldable">
+        <Card
+          titre={
+            <>
+              {titre}
+              <FontAwesomeIcon icon={faCirclePlus} onClick={onClick} />
+            </>
+          }
+          content={null}
+        />
+      </Button>
     );
   }
   return ret;

@@ -5,8 +5,7 @@ function Card({ titre, content }) {
   return (
     <article className="card">
       <header className="card__header header__title">{titre}</header>
-      <section className="card__main">Content</section>
-      {content}
+      <section className="card__main">{content}</section>
     </article>
   );
 }

@@ -16,3 +16,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ctrl + shift + k pour la console de dev firefox
+
+notes :
+fetch(URL).then((response) => response.json())
+Ceci retourne une promesse. C'est une promesse.

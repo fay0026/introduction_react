@@ -11,31 +11,44 @@ function App() {
     two: false,
     three: false,
   });
+
   const [counts, setCounts] = useState({
     simple: 0,
     chats: 0,
   });
+
   const { simple, chats } = counts;
   const { one, two, three } = gates;
+
   const simpleHandler = (cpt) => {
     setCounts({ simple: cpt, chats });
-    // console.log(cpt);
-    // console.log("Le simple est +1");
   };
   const chatsHandler = (cpt) => {
     setCounts({ simple, chats: cpt });
-    // console.log(cpt);
-    // console.log("Miaou");
   };
+
   const gatesHandler1 = () => {
-    setGates({ one: true, two, three });
+    if (gates.one) {
+      setGates({ one: false, two, three });
+    } else {
+      setGates({ one: true, two, three });
+    }
   };
   const gatesHandler2 = () => {
-    setGates({ one, two: true, three });
+    if (gates.two) {
+      setGates({ one, two: false, three });
+    } else {
+      setGates({ one, two: true, three });
+    }
   };
   const gatesHandler3 = () => {
-    setGates({ one, two, three: true });
+    if (gates.three) {
+      setGates({ one, two, three: false });
+    } else {
+      setGates({ one, two, three: true });
+    }
   };
+
   // console.log(typeof chatsHandler);
   return (
     <div className="app">
