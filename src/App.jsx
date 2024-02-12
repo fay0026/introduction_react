@@ -59,7 +59,7 @@ function App() {
         <div className="cards">
           <Card
             titre="Compteur simple"
-            content={<Counter className="Compteur" onChange={simpleHandler} />}
+            content={<Counter className="btn" onChange={simpleHandler} />}
           />
           <FoldableCard
             titre="Compteur avec 2 chats"
@@ -67,7 +67,7 @@ function App() {
               <Counter
                 before={<FontAwesomeIcon icon={faShieldCat} />}
                 after={<FontAwesomeIcon icon={faShieldCat} />}
-                className="Compteur"
+                className="btn"
                 onChange={chatsHandler}
               />
             }
