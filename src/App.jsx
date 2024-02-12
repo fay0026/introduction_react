@@ -1,25 +1,40 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
 import Card from "./components/Card";
+import FoldableCard from "./components/FoldableCard";
 import Counter from "./components/Counter";
 
 function App() {
+  const [gates, setGates] = useState({
+    one: false,
+    two: false,
+    three: false,
+  });
   const [counts, setCounts] = useState({
     simple: 0,
     chats: 0,
   });
   const { simple, chats } = counts;
+  const { one, two, three } = gates;
   const simpleHandler = (cpt) => {
     setCounts({ simple: cpt, chats });
-    console.log(cpt);
-    console.log("Le simple est +1");
+    // console.log(cpt);
+    // console.log("Le simple est +1");
   };
   const chatsHandler = (cpt) => {
     setCounts({ simple, chats: cpt });
-    console.log(cpt);
-    console.log("Miaou");
+    // console.log(cpt);
+    // console.log("Miaou");
+  };
+  const gatesHandler1 = () => {
+    setGates({ one: true, two, three });
+  };
+  const gatesHandler2 = () => {
+    setGates({ one, two: true, three });
+  };
+  const gatesHandler3 = () => {
+    setGates({ one, two, three: true });
   };
   // console.log(typeof chatsHandler);
   return (
@@ -33,7 +48,7 @@ function App() {
             titre="Compteur simple"
             content={<Counter className="Compteur" onChange={simpleHandler} />}
           />
-          <Card
+          <FoldableCard
             titre="Compteur avec 2 chats"
             content={
               <Counter
@@ -43,8 +58,16 @@ function App() {
                 onChange={chatsHandler}
               />
             }
+            opened={one}
+            onClick={gatesHandler1}
           />
-          <Card titre="Total compteurs" content={chats + simple} />
+          <FoldableCard
+            titre="Total compteurs"
+            content={chats + simple}
+            opened={two}
+            onClick={gatesHandler2}
+          />
+          <FoldableCard titre="Rien" opened={three} onClick={gatesHandler3} />
         </div>
       </main>
       <footer className="app__footer footer">footer</footer>
