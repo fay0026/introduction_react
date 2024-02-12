@@ -12,13 +12,16 @@ function App() {
   });
   const { simple, chats } = counts;
   const simpleHandler = (cpt) => {
-    setCounts([cpt, chats]);
+    setCounts({ simple: cpt, chats });
+    console.log(cpt);
     console.log("Le simple est +1");
   };
   const chatsHandler = (cpt) => {
-    setCounts([simple, cpt]);
+    setCounts({ simple, chats: cpt });
+    console.log(cpt);
     console.log("Miaou");
   };
+  // console.log(typeof chatsHandler);
   return (
     <div className="app">
       <header className="app__header header">
@@ -28,8 +31,7 @@ function App() {
         <div className="cards">
           <Card
             titre="Compteur simple"
-            content={<Counter className="Compteur" />}
-            onChange={simpleHandler}
+            content={<Counter className="Compteur" onChange={simpleHandler} />}
           />
           <Card
             titre="Compteur avec 2 chats"
@@ -38,9 +40,9 @@ function App() {
                 before={<FontAwesomeIcon icon={faShieldCat} />}
                 after={<FontAwesomeIcon icon={faShieldCat} />}
                 className="Compteur"
+                onChange={chatsHandler}
               />
             }
-            onChange={chatsHandler}
           />
           <Card titre="Total compteurs" content={chats + simple} />
         </div>

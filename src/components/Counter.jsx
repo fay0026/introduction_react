@@ -6,19 +6,21 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 
 function Counter({ before, after, className, onChange }) {
+  console.log("WE PASS THERE");
   const [cpt, setCpt] = useState(0);
   const clickHandler = () => {
     setCpt(cpt + 1);
     console.log(cpt);
   };
   useEffect(() => {
-    if (onChange != null) {
+    console.log(typeof onChange);
+    if (typeof onChange !== "function") {
+      console.log("WHYYYY");
+    } else {
       console.log("HANDLE");
       onChange(cpt);
-    } else {
-      console.log("WHYYYYYYYYYYYYYYYYYYYYY");
     }
-  }, [onChange]);
+  }, [cpt]);
   return (
     <Button className={className} onClick={clickHandler}>
       {before}
