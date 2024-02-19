@@ -9,14 +9,6 @@ import useShowable from "../hooks/useShowable";
 
 function FoldableCard({ titre, content }) {
   const { isShown, setIsShown } = useShowable();
-  /* const [isShown, toggleShown] = useState(false);
-  const setIsShown = () => {
-    if (isShown) {
-      toggleShown(false);
-    } else {
-      toggleShown(true);
-    }
-  }; */
   let ret;
   if (isShown) {
     ret = (
