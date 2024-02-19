@@ -1,41 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card";
-import Button from "./Button";
 
 <FontAwesomeIcon icon={faCircleMinus} />;
 
-function FoldableCard({ titre, content, opened, onClick }) {
+function FoldableCard({ titre, content }) {
+  const [isShown, setIsShown] = useState(false);
+  const shownHandler = () => {
+    if (isShown) {
+      setIsShown(false);
+    } else {
+      setIsShown(true);
+    }
+  };
   let ret;
-  if (opened) {
+  if (isShown) {
     ret = (
-      <Button className="card foldable shown">
-        <Card
-          titre={
-            <>
-              {titre}
-              <FontAwesomeIcon icon={faCircleMinus} onClick={onClick} />
-            </>
-          }
-          content={content}
-        />
-      </Button>
+      <Card
+        titre={
+          <>
+            {titre}
+            <FontAwesomeIcon icon={faCircleMinus} />
+          </>
+        }
+        content={content}
+        onClick={shownHandler}
+      />
     );
   } else {
     ret = (
-      <Button className="card foldable">
-        <Card
-          titre={
-            <>
-              {titre}
-              <FontAwesomeIcon icon={faCirclePlus} onClick={onClick} />
-            </>
-          }
-          content={null}
-        />
-      </Button>
+      <Card
+        titre={
+          <>
+            {titre}
+            <FontAwesomeIcon icon={faCirclePlus} />
+          </>
+        }
+        content={null}
+        onClick={shownHandler}
+      />
     );
   }
   return ret;
@@ -44,13 +49,11 @@ function FoldableCard({ titre, content, opened, onClick }) {
 FoldableCard.propTypes = {
   titre: PropTypes.string,
   content: PropTypes.node,
-  opened: PropTypes.bool,
 };
 
 FoldableCard.defaultProps = {
   titre: "Title",
   content: null,
-  opened: false,
 };
 
 export default FoldableCard;
