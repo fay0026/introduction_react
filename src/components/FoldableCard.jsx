@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import { React /* , useState */ } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card";
+import useShowable from "../hooks/useShowable";
 
 <FontAwesomeIcon icon={faCircleMinus} />;
 
 function FoldableCard({ titre, content }) {
-  const [isShown, setIsShown] = useState(false);
-  const shownHandler = () => {
+  const { isShown, setIsShown } = useShowable();
+  /* const [isShown, toggleShown] = useState(false);
+  const setIsShown = () => {
     if (isShown) {
-      setIsShown(false);
+      toggleShown(false);
     } else {
-      setIsShown(true);
+      toggleShown(true);
     }
-  };
+  }; */
   let ret;
   if (isShown) {
     ret = (
@@ -26,7 +28,7 @@ function FoldableCard({ titre, content }) {
           </>
         }
         content={content}
-        onClick={shownHandler}
+        onClick={setIsShown}
       />
     );
   } else {
@@ -39,7 +41,7 @@ function FoldableCard({ titre, content }) {
           </>
         }
         content={null}
-        onClick={shownHandler}
+        onClick={setIsShown}
       />
     );
   }
