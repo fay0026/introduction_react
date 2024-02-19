@@ -4,6 +4,7 @@ import { faShieldCat } from "@fortawesome/free-solid-svg-icons";
 import Card from "./components/Card";
 import FoldableCard from "./components/FoldableCard";
 import Counter from "./components/Counter";
+import data from "./constants/cardsData.js";
 
 function App() {
   const [gates, setGates] = useState({
