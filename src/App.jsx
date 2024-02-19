@@ -59,7 +59,13 @@ function App() {
         <div className="cards">
           <Card
             titre="Compteur simple"
-            content={<Counter className="btn" onChange={simpleHandler} />}
+            content={
+              <Counter
+                className="btn"
+                onChange={simpleHandler}
+                initial={simple}
+              />
+            }
           />
           <FoldableCard
             titre="Compteur avec 2 chats"
@@ -69,6 +75,7 @@ function App() {
                 after={<FontAwesomeIcon icon={faShieldCat} />}
                 className="btn"
                 onChange={chatsHandler}
+                initial={chats}
               />
             }
             opened={one}

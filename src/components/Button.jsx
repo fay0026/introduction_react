@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Button({ children, className, onClick }) {
-  let retour;
-  if (children == null) {
-    retour = "bouton";
-  } else {
-    retour = children;
+  function ItsTimeToStop(ev) {
+    ev.stopPropagation();
+    if (onClick != null) {
+      onClick();
+    }
   }
+
   return (
-    <button className={className} type="button" onClick={onClick}>
-      <article>{retour}</article>
+    <button className={className} type="button" onClick={ItsTimeToStop}>
+      <article>{children}</article>
     </button>
   );
 }
@@ -22,7 +23,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  children: null,
+  children: "bouton",
   className: "",
   onClick: null,
 };
