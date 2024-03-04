@@ -7,7 +7,7 @@ import Counter from "./components/Counter";
 import Data from "./constants/cardsData";
 import Cards from "./components/Cards";
 
-const test = 2;
+const test = 1;
 
 function App() {
   if (test === 1) {
