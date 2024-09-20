@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 function Button({ children, className, onClick }) {
   function ItsTimeToStop(ev) {
@@ -15,17 +14,5 @@ function Button({ children, className, onClick }) {
     </button>
   );
 }
-
-Button.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-  children: "bouton",
-  className: "",
-  onClick: null,
-};
 
 export default Button;

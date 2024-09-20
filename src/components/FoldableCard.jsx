@@ -1,5 +1,4 @@
 import { React, useEffect /* , useState */ } from "react";
-import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card";
@@ -10,7 +9,9 @@ import useShowable from "../hooks/useShowable";
 function FoldableCard({ title, content, opened, onToggleOpened }) {
   const { isShown, setIsShown } = useShowable(opened);
   useEffect(() => {
-    onToggleOpened();
+    if (onToggleOpened != null) {
+      onToggleOpened();
+    }
   }, [opened]);
   let ret;
   if (isShown) {
@@ -42,17 +43,5 @@ function FoldableCard({ title, content, opened, onToggleOpened }) {
   }
   return ret;
 }
-
-FoldableCard.propTypes = {
-  titre: PropTypes.string,
-  content: PropTypes.node,
-  onToggleOpened: PropTypes.func,
-};
-
-FoldableCard.defaultProps = {
-  titre: "Title",
-  content: null,
-  onToggleOpened: null,
-};
 
 export default FoldableCard;

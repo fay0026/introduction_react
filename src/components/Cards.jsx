@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import PropTypes from "prop-types";
 import FoldableCard from "./FoldableCard";
 
 function Cards({ cardsData }) {
@@ -23,15 +22,5 @@ function Cards({ cardsData }) {
     </div>
   );
 }
-
-Cards.propTypes = {
-  cardsData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      content: PropTypes.string,
-    }),
-  ).isRequired,
-};
 
 export default Cards;

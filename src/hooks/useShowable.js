@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 export default function useShowable(shown, baseClassName) {
   const [isShown, toggleShown] = useState(shown);
@@ -21,13 +20,3 @@ export default function useShowable(shown, baseClassName) {
     extendedclassName,
   };
 }
-
-useShowable.propTypes = {
-  shown: PropTypes.bool,
-  baseClassName: PropTypes.string,
-};
-
-useShowable.defaultProps = {
-  shown: false,
-  baseClassName: "",
-};

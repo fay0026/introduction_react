@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Button from "./Button";
 
 function Card({ titre, content, onClick }) {
@@ -10,17 +9,5 @@ function Card({ titre, content, onClick }) {
     </Button>
   );
 }
-
-Card.propTypes = {
-  titre: PropTypes.string,
-  content: PropTypes.node,
-  onClick: PropTypes.func,
-};
-
-Card.defaultProps = {
-  titre: "Title",
-  content: null,
-  onClick: null,
-};
 
 export default Card;
